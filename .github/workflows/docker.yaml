@@ -140,7 +140,7 @@ jobs:
             
             # 将@sha256:等字符删除
             #image_name_tag="${image_name_tag%%@*}"
-            new_image="$ALIYUN_REGISTRY/$image"
+            new_image="$ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/$image"
             echo "docker tag $image_old $new_image"
             docker tag $image_old $new_image
             echo "docker push $new_image"
