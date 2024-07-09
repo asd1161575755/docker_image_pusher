@@ -56,8 +56,7 @@ jobs:
 
     - name: Build and push image
       run: |
-        #docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY
-        docker login -u docker -p docker harbor.dbug.cloud
+        docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY
         # 数据预处理,判断镜像是否重名
         declare -A duplicate_images
         declare -A temp_map
@@ -140,8 +139,7 @@ jobs:
             
             # 将@sha256:等字符删除
             #image_name_tag="${image_name_tag%%@*}"
-            #new_image="$REGISTRY/$image"
-            new_image="harbor.dbug.cloud/$image"
+            new_image="$REGISTRY/$image"
             echo "docker tag $image_old $new_image"
             docker tag $image_old $new_image
             echo "docker push $new_image"
