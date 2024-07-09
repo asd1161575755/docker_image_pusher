@@ -56,7 +56,6 @@ jobs:
 
     - name: Build and push image
       run: |
-        docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY
         # 数据预处理,判断镜像是否重名
         declare -A duplicate_images
         declare -A temp_map
@@ -97,7 +96,7 @@ jobs:
             fi       
         done < images.txt
         
-        
+        docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY
         while IFS= read -r line || [ -n "$line" ]; do
             # 忽略空行与注释
             [[ -z "$line" ]] && continue
