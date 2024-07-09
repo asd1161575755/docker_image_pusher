@@ -56,7 +56,6 @@ jobs:
 
     - name: Build and push image
       run: |
-        echo curl -I https://$REGISTRY
         docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY
         # 数据预处理,判断镜像是否重名
         declare -A duplicate_images
